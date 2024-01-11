@@ -7,7 +7,7 @@ This Bash script automates the installation of the Zscaler root certificate on t
 - Bash shell
 - Zscaler root certificate file (`ZscalerRootCA.pem`)
 
-The Zscaler root certficate can be retrieved from a number of locations, for example on OSX if installed in keychain it can be exported to a PEM and saved in your home directory.
+The Zscaler root certificate can be retrieved from a number of locations, for example on OSX if installed in keychain it can be exported to a PEM and saved in your home directory.
 
 ![Zscaler in keychain](./images/osx-keychain-zscaler-certificate.png)
 
@@ -16,7 +16,7 @@ The Zscaler root certficate can be retrieved from a number of locations, for exa
 The following applications are currently supported, [contributions](./CONTRIBUTING.md) are welcome.
 
 - OSX
-  - pip
+  - pip, uses system trust store
 - Linux
 - Windows
 
