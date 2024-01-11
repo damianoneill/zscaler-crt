@@ -56,7 +56,7 @@ detect_os_and_install() {
 # Function to check the presence of the PEM file
 check_pem_file() {
     if [ ! -f "$DEFAULT_PEM_FILE_PATH/$DEFAULT_PEM_FILE" ]; then
-        echo "PEM file not found. Exiting..."
+        echo "PEM file $DEFAULT_PEM_FILE_PATH/$DEFAULT_PEM_FILE not found. Exiting..."
         exit 1
     fi
 }
