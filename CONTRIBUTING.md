@@ -51,8 +51,4 @@ Please adhere to the coding style and conventions used in the existing codebase.
 
 If you encounter any issues or have suggestions, please [open an issue](https://github.com/damianoneill/zscaler-crt/issues) on GitHub. Include as much detail as possible, such as operating system, relevant code snippets, and error messages.
 
-## Contact
-
-If you have questions or need clarification, feel free to reach out to the maintainers or the community in the [Discussions](https://github.com/damianoneill/zscaler-crt/discussions) section.
-
 Thank you for contributing to Zscaler CRT!
