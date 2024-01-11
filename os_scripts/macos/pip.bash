@@ -6,10 +6,11 @@ set -euo pipefail
 # Path to the Zscaler PEM file passed from the calling script
 ZSCALER_PEM_FILE="$DEFAULT_PEM_FILE_PATH/$DEFAULT_PEM_FILE"
 
+PIP_CONFIG_DIR="${HOME_DIR}/.config/pip/"
+PIP_CONF_FILE="${PIP_CONFIG_DIR}/pip.conf"
+
 # Configure pip to use the custom certificate
-configure_pip() {
-    PIP_CONFIG_DIR="${HOME_DIR}/.config/pip/"
-    PIP_CONF_FILE="${PIP_CONFIG_DIR}/pip.conf"
+configure() {
 
     # Create pip config directory if it doesn't exist
     mkdir -p "$PIP_CONFIG_DIR"
@@ -40,9 +41,31 @@ configure_pip() {
 
 }
 
+# Assert that the configuration is working
+assert() {
+    # assert that configuration of zscaler cert has been applied
+    if ! pip config list | grep -qFx "global.cert='$ZSCALER_PEM_FILE'"; then
+        echo "Failed to configure pip to use the custom certificate at: $ZSCALER_PEM_FILE"
+        exit 1
+    fi
+    # assert that pip is able to install packages
+    echo "Asserting pip install through zscaler ..."
+    if ! pip install -q --upgrade pip; then
+        echo "Failed to install packages using pip"
+        exit 1
+    fi
+}
+
 # Main function
 main() {
-    configure_pip
+    # configure if pip is installed
+    if command -v pip >/dev/null 2>&1; then
+        echo "Configuring pip [$PIP_CONF_FILE] to use the custom certificate at: $ZSCALER_PEM_FILE"
+        configure
+        assert
+    else
+        echo "pip is not installed, ignoring"
+    fi
 }
 
 main

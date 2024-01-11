@@ -12,6 +12,32 @@ export SCRIPT_DIR
 export DEFAULT_OS_SCRIPTS_DIR="${DEFAULT_OS_SCRIPTS_DIR:-$SCRIPT_DIR/os_scripts}"
 export DEFAULT_PEM_FILE="ZscalerRootCA.pem"
 
+# check bash version is 4 or higher
+if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
+    echo "Error: Bash version 4 or higher is required, you have ${BASH_VERSION}"
+    if [ "$(uname)" == "Darwin" ]; then
+        echo "You can install bash 4+ with brew install bash"
+    fi
+    exit 1
+fi
+
+# Define the list of required binaries
+REQUIRED_BINARIES=("grep" "awk")
+
+# Function to check if a binary is available
+function check_binary() {
+    local binary="$1"
+    if ! command -v "$binary" &>/dev/null; then
+        echo "Error: $binary is not installed or not in your PATH"
+        exit 1
+    fi
+}
+
+# Check if all required binaries are available
+for binary in "${REQUIRED_BINARIES[@]}"; do
+    check_binary "$binary"
+done
+
 # Set default HOME_DIR based on the operating system
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "linux-gnu" ]]; then
     # Windows using MSYS or Cygwin or WSL
