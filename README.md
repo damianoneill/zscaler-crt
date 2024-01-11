@@ -11,6 +11,15 @@ The Zscaler root certficate can be retrieved from a number of locations, for exa
 
 ![Zscaler in keychain](./images/osx-keychain-zscaler-certificate.png)
 
+## Support
+
+The following applications are currently supported, [contributions](./CONTRIBUTING.md) are welcome.
+
+- OSX
+  - pip
+- Linux
+- Windows
+
 ## Usage
 
 1. Ensure that the Zscaler root certificate file (`ZscalerRootCA.pem`) is available and stored in your home directory.
