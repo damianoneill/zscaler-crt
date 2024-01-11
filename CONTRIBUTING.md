@@ -6,8 +6,9 @@ Thank you for considering contributing to the Zscaler CRT project! By contributi
 
 Each new script (new feature or new os support for existing feature), should be:
 
-- idempotent, multiple runs result in the same output
-- globally useable, for e.g. for application like virtual environments, the solution should be globally applicably so that it doesn't need to be applied for each new virtual environment that gets created.  For example, the [pip.bash](./os_scripts/macos/pip.bash) use a global config option for the certificate that will be applied to all pip installations.
+- idempotent, multiple runs result in the same output.
+- globally useable, for e.g. for application like virtual environments, the solution should be globally applicable so that it doesn't need to be applied for each new virtual environment that gets created.  For example, the [pip.bash](./os_scripts/macos/pip.bash) use a global config option for the certificate that will be applied to all pip installations.
+- if an option exists to use the system trust store, adopt this option, before using the pem directly.
 
 ## How to Contribute
 
