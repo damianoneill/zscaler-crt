@@ -16,7 +16,7 @@ The Zscaler root certificate can be retrieved from a number of locations, for ex
 The following applications are currently supported, [contributions](./CONTRIBUTING.md) are welcome.
 
 - OSX
-  - pip, uses system trust store
+  - pip
   - openssl
 - Linux
 - Windows
