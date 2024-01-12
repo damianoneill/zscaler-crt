@@ -17,6 +17,7 @@ The following applications are currently supported, [contributions](./CONTRIBUTI
 
 - OSX
   - pip, uses system trust store
+  - openssl
 - Linux
 - Windows
 

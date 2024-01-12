@@ -8,7 +8,6 @@ PIP_CONF_FILE="${PIP_CONFIG_DIR}/pip.conf"
 
 # Configure pip to use the system trust store, which should contain the zscaler certificate
 configure() {
-
     # Create pip config directory if it doesn't exist
     mkdir -p "$PIP_CONFIG_DIR"
 
@@ -35,7 +34,6 @@ configure() {
 
         echo "Pip configured to use the system trust store"
     fi
-
 }
 
 # Assert that the configuration is working
@@ -46,14 +44,15 @@ assert() {
         exit 1
     fi
     # assert that pip is able to install packages
-    echo "Asserting pip install through zscaler ..."
     if ! pip install -q --upgrade pip; then
-        echo "Failed to install packages using pip"
+        echo "Assertion: Failed to install packages using pip"
         exit 1
+    else
+        echo "Assertion: Successfully installed packages using pip through zscaler"
     fi
 }
 
-check_pip() {
+check() {
     # check if pip is installed, return error code if not
     if ! command -v pip >/dev/null 2>&1; then
         echo "pip is not installed, ignoring"
@@ -70,13 +69,12 @@ check_pip() {
 # Main function
 main() {
     # call check pip function and exit if pip is not installed or version is not 22.2 or higher
-    check_pip || exit 0
+    check || exit 0
 
     # configure pip to use the system trust store
-    echo "Configuring pip [$PIP_CONF_FILE] to use the system trust store"
+    echo "Configuring: pip [$PIP_CONF_FILE] to use the system trust store"
     configure
     assert
-
 }
 
 main

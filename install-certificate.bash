@@ -59,7 +59,7 @@ install_certificates() {
     else
         for script in "${scripts[@]}"; do
             if [ -f "$script" ]; then
-                echo "Running $script installation script..."
+                echo "Running: $script installation script..."
                 bash "$script"
             fi
         done
