@@ -1,5 +1,8 @@
 # Zscaler Root Certificate Installation Script
 
+| :exclamation:  Only run this if you have zscaler installed, if zscaler is uninstalled you will have to revert this configuration   |
+|------------------------------------------------------------------------------------------------------------------------------------|
+
 This Bash script automates the installation of the Zscaler root certificate on the local machine. It intelligently detects the operating system and executes the appropriate installation scripts. Additionally, it runs common installation scripts regardless of the operating system installed on the local machine.
 
 ## Prerequisites
@@ -18,6 +21,7 @@ The following applications are currently supported, [contributions](./CONTRIBUTI
 - OSX
   - pip
   - openssl
+  - requests
 - Linux
 - Windows
 
